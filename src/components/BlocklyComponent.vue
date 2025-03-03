@@ -1,0 +1,53 @@
+<script setup lang="ts">
+/**
+ * @license
+ * Copyright 2022 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview Blockly Vue Component.
+ * @author dcoodien@gmail.com (Dylan Coodien)
+ */
+
+import {ref, shallowRef} from 'vue';
+//import * as Blockly from 'blockly/core';
+//import * as En from 'blockly/msg/en';
+import 'blockly/blocks';
+
+//const props = defineProps(['options']);
+const blocklyToolbox = ref();
+const blocklyDiv = ref();
+const workspace = shallowRef();
+
+defineExpose({workspace});
+
+/*
+onMounted(() => {
+  Blockly.setLocale(En);
+  const options = props.options || {};
+  if (!options.toolbox) {
+    options.toolbox = blocklyToolbox.value;
+  }
+  workspace.value = Blockly.inject(blocklyDiv.value, options);
+});
+*/
+</script>
+
+<template>
+  <div>
+    <div ref="blocklyDiv" class="blocklyDiv"></div>
+    <xml ref="blocklyToolbox" style="display: none">
+      <slot></slot>
+    </xml>
+  </div>
+</template>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.blocklyDiv {
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
+</style>
